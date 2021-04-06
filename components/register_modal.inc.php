@@ -17,7 +17,7 @@
       <form>
           <div class="form-group">
             <label for="Username">Username</label>
-            <input type="username" class="form-control" id="inputUsername" placeholder="Enter Username">
+            <input type="username" class="form-control" id="registerInputUsername" placeholder="Enter Username">
             <!-- <small id="usernameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
           <div class="form-group">
@@ -26,7 +26,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Confirm Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+            <input type="password" class="form-control" id="registerInputPassword" placeholder="Confirm Password">
           </div>
         </form>
 
