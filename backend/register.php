@@ -18,14 +18,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $username = $_POST["username"];
         // Prepare a select statement
-        $sql = "SELECT user_id FROM users WHERE user_name = $username ";
-        $result = $conn->query($sql);
+        $sql = "SELECT user_id FROM users WHERE user_name = '$username' ";
+        $result =mysqli_query($conn, $sql);
+        $num = mysqli_num_rows($result);
         echo "
                 <script>
-                alert(\"$result->num_rows\")
+                console.log('$num');
                 </script>            
             ";
-        if($result->num_rows > 0){
+        if(mysqli_num_rows($result) > 0){
             die('User Already Exists');
             $username_err = "err";
         }
@@ -53,23 +54,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             die("Password did not match.");
         }
     }
-    
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
         // Prepare an insert statement
-        $sql = "INSERT INTO users (user_name, password_hash,admin) VALUES ('$username', '$password','no')";
-         
-        if ($conn->query($sql) === TRUE) {
+         $sql = "INSERT INTO users (user_name, password_hash,admin) VALUES ('$username', '$hashed_password','no')";
+         if (mysqli_query($conn, $sql)) {
             echo "
                 <script>
-                alert(\"Account Successfully Created\")
+                 alert(\"Account Successfully Created \n Please Login \")
                 </script>            
-            ";
-            // header('Location: ../index.php');
+           ";
+             header('Location: ../index.php');
           } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            die("Error: " . $sql . "<br>" . mysqli_error($conn));
           }
+        // if ($conn->query($sql) === TRUE) {
+        //     echo "
+        //         <script>
+        //         alert(\"Account Successfully Created\")
+        //         </script>            
+        //     ";
+        //     // header('Location: ../index.php');
+        //   } else {
+        //     echo "Error: " . $sql . "<br>" . $conn->error;
+        //   }
           
-          $conn->close();
+        mysqli_close($conn);
        
 }
 
