@@ -20,12 +20,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Prepare a select statement
         $sql = "SELECT user_id FROM users WHERE user_name = '$username' ";
         $result =mysqli_query($conn, $sql);
-        $num = mysqli_num_rows($result);
-        echo "
-                <script>
-                console.log('$num');
-                </script>            
-            ";
+        // $num = mysqli_num_rows($result);
+        // echo "
+        //         <script>
+        //         console.log('$num');
+        //         </script>            
+        //     ";
         if(mysqli_num_rows($result) > 0){
             die('User Already Exists');
             $username_err = "err";
@@ -46,7 +46,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        
         die("Please confirm password.");     
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
