@@ -1,11 +1,9 @@
 <?php
 
 $message = "Connecting DB";
-// echo $message;
-// Include config file
+
 require_once "..\config\db_config.php";
- 
-// Define variables and initialize with empty values
+
 $email = $password = "";
 $email_err = $password_err = "";
 
@@ -16,15 +14,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
        $email=$_POST["email"];
        $password=$_POST['password'];
-      
        $sql = "SELECT password_hash,uuid FROM `user-master` WHERE email = '$email' ";
         $result =mysqli_query($conn, $sql);
         
         if(mysqli_num_rows($result) >0){  
             while($row = mysqli_fetch_assoc($result)) {
                if(password_verify($password,$row['password_hash'])){
-                session_start();
-                            
+                session_start();            
                 // Store data in session variables
                 $_SESSION["loggedin"] = true;
                 $_SESSION["uuid"] = $row['uuid'];
@@ -35,12 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 die("Incorrect Password");
                }
               }
-
         }else{
 
             die("Incorrect Email");
         }
-
     }
     mysqli_close($conn);
 }

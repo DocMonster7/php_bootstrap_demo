@@ -18,8 +18,7 @@
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Enter Email address">
-            <!-- <small id="usernameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-          </div>
+                     </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" name="password" placeholder="Password">

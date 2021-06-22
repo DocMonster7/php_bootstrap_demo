@@ -14,12 +14,6 @@
     </ul>
     <span class="navbar-text">
       <a href="logout.php">Logout</a>
-      <?php 
-      
-      // include('components\login_modal.inc.php');
-      // include('components\register_modal.inc.php');
-      ?>
-
     </span>
   </div>
 </nav>

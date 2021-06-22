@@ -25,8 +25,6 @@
                 <input type="date" class="form-control" id="dob" name="dob" placeholder="01/12/1997">
             </div>
         </div>
-
-
         <div class="form-group">
             <label for="inputAddress">Address</label>
             <input type="text" class="form-control" id="inputAddress" name="add1" placeholder="1234 Main St">
@@ -45,7 +43,6 @@
                 <input type="text" class="form-control" name="zip" id="inputZip">
             </div>
         </div>
-
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
     <br><br>

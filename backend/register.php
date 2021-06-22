@@ -20,12 +20,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Prepare a select statement
         $sql = "SELECT uuid FROM `user-master` WHERE email = '$email' ";
         $result =mysqli_query($conn, $sql);
-        // $num = mysqli_num_rows($result);
-        // echo "
-        //         <script>
-        //         console.log('$num');
-        //         </script>            
-        //     ";
         if(mysqli_num_rows($result) > 0){
             die('User Already Exists');
             $email_err = "err";
