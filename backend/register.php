@@ -5,20 +5,20 @@ echo $message;
 require_once "..\config\db_config.php";
  
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$email = $password = $confirm_password = "";
+$email_err = $password_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Validate username
-    if(empty(trim($_POST["username"]))){
-        die("Please enter a username.");
-        $username_err = "err";
+    // Validate email
+    if(empty(trim($_POST["email"]))){
+        die("Please enter a email.");
+        $email_err = "err";
     } else{
-        $username = $_POST["username"];
+        $email = $_POST["email"];
         // Prepare a select statement
-        $sql = "SELECT user_id FROM users WHERE user_name = '$username' ";
+        $sql = "SELECT uuid FROM `user-master` WHERE email = '$email' ";
         $result =mysqli_query($conn, $sql);
         // $num = mysqli_num_rows($result);
         // echo "
@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         //     ";
         if(mysqli_num_rows($result) > 0){
             die('User Already Exists');
-            $username_err = "err";
+            $email_err = "err";
         }
         
     }
@@ -54,9 +54,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    
+//     BEGIN 
+//     SET NEW.user_id = UUID(); 
+// END
         // Prepare an insert statement
-         $sql = "INSERT INTO users (user_name, password_hash,admin) VALUES ('$username', '$hashed_password','no')";
+         $sql = "INSERT INTO `user-master` (email, password_hash) VALUES ('$email', '$hashed_password')";
          if (mysqli_query($conn, $sql)) {
             echo "
                 <script>
@@ -67,19 +69,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           } else {
             die("Error: " . $sql . "<br>" . mysqli_error($conn));
           }
-        // if ($conn->query($sql) === TRUE) {
-        //     echo "
-        //         <script>
-        //         alert(\"Account Successfully Created\")
-        //         </script>            
-        //     ";
-        //     // header('Location: ../index.php');
-        //   } else {
-        //     echo "Error: " . $sql . "<br>" . $conn->error;
-        //   }
+        
           
         mysqli_close($conn);
        
 }
-
-?>

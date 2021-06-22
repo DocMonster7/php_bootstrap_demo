@@ -1,9 +1,9 @@
 
-<footer class="page-footer font-small text-white bg-dark">
+<!-- <footer class="page-footer font-small text-white bg-dark"> -->
 
 <!-- Copyright -->
-<div class="footer-copyright text-center py-3" >© 2020 Copyright: MetalHub Inc
-</div>
+<!-- <div class="footer-copyright text-center py-3" >© 2020 Copyright: MetalHub Inc
+</div> -->
 <!-- Copyright -->
 
 </footer>

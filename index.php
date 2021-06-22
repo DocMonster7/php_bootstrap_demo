@@ -1,23 +1,23 @@
 <?php
-
+session_start();
 require('components\head.inc.php');
-include('components\navbar.inv.php');
+ include('components\navbar.inv.php');
 require('backend\middleware.php');
 
 ?>
 
 <div class="container">
-  <?php
-  include('components\carousel.inc.php');
-  $break = '<br>';
+  <!-- <?php
+  // include('components\carousel.inc.php');
+  // $break = '<br>';
 
-  echo $break;
+  // echo $break;
 
-  include('components\latest_news.inc.php');
+  // include('components\latest_news.inc.php');
 
-  echo $break;
+  // echo $break;
 
-  ?>
+  ?> -->
 
 </div>
 

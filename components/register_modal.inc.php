@@ -15,9 +15,9 @@
       <div class="modal-body">
 
         <form action="backend\register.php" method="POST">
-          <div class="form-group">
-            <label for="Username">Username</label>
-            <input type="username" class="form-control" name="username" placeholder="Enter Username">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Enter Email address">
             <!-- <small id="usernameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
           </div>
           <div class="form-group">
